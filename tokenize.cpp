@@ -153,7 +153,7 @@ void tokenize(std::string& filename) {
                 substring = "";
                 continue;
             } else {
-                output << "IDENTIFIER: " << substring << "\n";
+                output << "ID: " << substring << "\n";
                 substring = "";
                 continue;
             }
