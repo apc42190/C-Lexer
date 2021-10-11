@@ -157,6 +157,20 @@ void tokenize(std::string& filename) {
             continue;
         }
 
+        if (input[current] == '\'') {
+            substring += input[current];
+            current++;
+            while (input[current] != '\'') {
+                substring += input[current];
+                current++;
+            }
+            substring += input[current];
+            current++;
+            output << "CHAR: " << substring << "\n";
+            substring = "";
+            continue;
+        }
+
         if (isalpha(input[current]) || input[current] == '_') {
             while (isalnum(input[current]) || input[current] == '_'){
                 substring += input[current];

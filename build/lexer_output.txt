@@ -9,6 +9,16 @@ ASSIGN: =
 INTEGER: 1234567890
 SEMICOL: ;
 KEYWORD: char
+ID: a
+ASSIGN: =
+CHAR: 'a'
+SEMICOL: ;
+KEYWORD: char
+ID: b
+ASSIGN: =
+CHAR: '_'
+SEMICOL: ;
+KEYWORD: char
 ID: pie
 LSQRBRACE: [
 RSQRBRACE: ]
@@ -66,9 +76,7 @@ SEMICOL: ;
 KEYWORD: char
 ID: ch
 ASSIGN: =
-APOST: '
-ID: a
-APOST: '
+CHAR: 'a'
 SEMICOL: ;
 KEYWORD: int
 ID: arr

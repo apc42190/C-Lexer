@@ -1,5 +1,7 @@
 int main() {
     int pizza = 1234567890;
+    char a = 'a';
+    char b = '_';
     char pie[] = "pizza al taglio";
     int pasta = 234123543234;
     float eatzaa = 9876.543210;
