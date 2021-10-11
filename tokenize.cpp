@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 
+
 bool isKeyword(const std::string& str) {
     std::vector<std::string> keywords{"if", "else", "while", "do", "break", "continue", "int", "double", "float", 
     "return", "char", "case", "long", "short", "typedef", "switch", "unsigned", "void", "static", "struct", "sizeof", 
@@ -32,6 +33,52 @@ bool isOperator(const std::string& str) {
     return false;
 }
 
+std::string whichOperator(const std::string str) {
+        if (str == "<") {
+            return "LEFTANGLE";
+        } else if (str == ">") {
+            return "RIGHTANGLE";
+        } else if (str == "*") {
+            return "MUL";
+        } else if (str == "+") {
+            return "PLUS";
+        } else if (str == "-") {
+            return "MINUS";
+        } else if (str == "/") {
+            return "DIVIDE";
+        } else if (str == "=") {
+            return "EQUAL";
+        } else if (str == "-=") {
+            return "MINEQU";
+        } else if (str == "*=") {
+            return "MULEQU";
+        } else if (str == "+=") {
+            return "PLUSEQU";
+        } else if (str == "/=") {
+            return "DIVEQU";
+        } else if (str == "++") {
+            return "INCRMT";
+        } else if (str == "--") {
+            return "DECRMT";
+        } else if (str == "==") {
+            return "DBLEQU";
+        } else if (str == "<=") {
+            return "LESSEQU";
+        } else if (str == ">=") {
+            return "GREATEREQU";
+        } else if (str == "||") {
+            return "OR";
+        } else if (str == "&&") {
+            return "AND";
+        } else if (str == "!") {
+            return "NOT";
+        } else if (str == "!=") {
+            return "NOTEQU";
+        } else {
+            return "UNKNOWN";
+        }
+}
+
 bool isSeperator(const std::string& str) {
     const std::vector<std::string> punctuations{"{", "}", ",", "(", ")", ";", "[", "]", ":", "'", "#", "\""};
     for(std::string punc : punctuations) {
@@ -42,6 +89,8 @@ bool isSeperator(const std::string& str) {
 
     return false;
 }
+
+std::string whichSeperator(const std::string);
 
 void tokenize(std::string& filename) {
     std::ofstream output("lexer_output.txt");
@@ -105,12 +154,12 @@ void tokenize(std::string& filename) {
                 }
             } else if (isOperator(substring + input[current + 1])) {
                 substring += input[current + 1];
-                output << "OPERATOR: " << substring << "\n";
+                output << whichOperator(substring) << ": " << substring << "\n";
                 current += 2;
                 substring = "";
                 continue;
             } else {
-                output << "OPERATOR: " << substring << "\n";
+                output << whichOperator(substring) << ": " << substring << "\n";
                 current++;
                 substring = "";
                 continue;
