@@ -1,7 +1,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-#include "include/tokenize.hpp"
+#include "../include/tokenize.hpp"
 
 int main(int argc, char* argv[]) { 
     if(argc > 1) {
