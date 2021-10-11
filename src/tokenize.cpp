@@ -6,7 +6,7 @@
 
 bool isKeyword(const std::string& str) {
     std::vector<std::string> keywords{"if", "else", "while", "do", "break", "continue", "int", "double", "float", 
-    "return", "char", "case", "long", "short", "typedef", "switch", "unsigned", "void", "static", "struct", "sizeof", 
+    "return", "char", "case", "long", "short", "size_t", "typedef", "switch", "unsigned", "void", "static", "struct", "sizeof", 
     "long", "volatile", "typedef", "enum", "const", "union", "extern", "bool", "asm", "auto", "catch", "class", "default", 
     "delete", "explicit", "export", "for", "friend", "goto", "inline", "mutable", "namespace", "new", "operator", "private", 
     "protected", "public", "register", "return", "signed", "template", "this", "throw", "true", "try", "typeid", "typename", 
@@ -39,7 +39,7 @@ std::string whichOperator(const std::string str) {
         } else if (str == ">") {
             return "GRTHAN";
         } else if (str == "*") {
-            return "MUL";
+            return "TIMES";
         } else if (str == "+") {
             return "PLUS";
         } else if (str == "-") {
@@ -51,7 +51,7 @@ std::string whichOperator(const std::string str) {
         } else if (str == "-=") {
             return "MINEQ";
         } else if (str == "*=") {
-            return "MULEQ";
+            return "TIMESEQ";
         } else if (str == "+=") {
             return "PLUSEQ";
         } else if (str == "/=") {
@@ -140,6 +140,20 @@ void tokenize(std::string& filename) {
         
         if(input[current] == ' ' || input[current] == '\n') {
             current++;
+            continue;
+        }
+
+        if (input[current] == '"') {
+            substring += input[current];
+            current++;
+            while (input[current] != '"') {
+                substring += input[current];
+                current++;
+            }
+            substring += input[current];
+            current++;
+            output << "STRING: " << substring << "\n";
+            substring = "";
             continue;
         }
 

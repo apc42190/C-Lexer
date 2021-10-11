@@ -8,6 +8,13 @@ ID: pizza
 ASSIGN: =
 INTEGER: 1234567890
 SEMICOL: ;
+KEYWORD: char
+ID: pie
+LSQRBRACE: [
+RSQRBRACE: ]
+ASSIGN: =
+STRING: "pizza al taglio"
+SEMICOL: ;
 KEYWORD: int
 ID: pasta
 ASSIGN: =
@@ -49,7 +56,7 @@ MINEQ: -=
 ID: whatever
 SEMICOL: ;
 ID: eatzaa
-MULEQ: *=
+TIMESEQ: *=
 ID: oobaz
 SEMICOL: ;
 ID: eatzaa
