@@ -1,5 +1,6 @@
 #include "../include/tokenize.hpp"
 #include <vector>
+#include <unordered_map>
 #include <string>
 #include <iostream>
 
@@ -36,49 +37,16 @@ bool isOperator(const std::string& str) {
 
 //Returns appropriate token for each operator
 std::string whichOperator(const std::string str) {
-        if (str == "<") {
-            return "LSTHAN";
-        } else if (str == ">") {
-            return "GRTHAN";
-        } else if (str == "*") {
-            return "TIMES";
-        } else if (str == "+") {
-            return "PLUS";
-        } else if (str == "-") {
-            return "MINUS";
-        } else if (str == "/") {
-            return "DIVIDE";
-        } else if (str == "=") {
-            return "ASSIGN";
-        } else if (str == "-=") {
-            return "MINEQ";
-        } else if (str == "*=") {
-            return "TIMESEQ";
-        } else if (str == "+=") {
-            return "PLUSEQ";
-        } else if (str == "/=") {
-            return "DIVEQ";
-        } else if (str == "++") {
-            return "INCRMT";
-        } else if (str == "--") {
-            return "DECRMT";
-        } else if (str == "==") {
-            return "CMPEQUAL";
-        } else if (str == "<=") {
-            return "LSEQ";
-        } else if (str == ">=") {
-            return "GREQ";
-        } else if (str == "||") {
-            return "OR";
-        } else if (str == "&&") {
-            return "AND";
-        } else if (str == "!") {
-            return "NOT";
-        } else if (str == "!=") {
-            return "NOTEQ";
-        } else {
-            return "UNKNOWN";
+    std::unordered_map<std::string, std::string> op_tokens = {{"<", "LSTHAN"}, {">", "GRTHAN"}, {"*", "TIMES"}, {"+", "PLUS"}, 
+        {"-", "MINUS"}, {"/", "DIVIDE"}, {"=", "ASSIGN"}, {"-=", "MINEQ"}, {"*=", "TIMESEQ"}, {"+=", "PLUSEQ"}, {"/=", "DIVEQ"}, 
+        {"++", "INCRMT"}, {"--", "DECRMT"}, {"==", "CMPEQUAL"}, {"<=", "LSEQ"}, {">=", "GREQ"}, {"||", "OR"}, {"&&", "AND"}, 
+        {"!", "NOT"}, {"!=", "NOTEQ"}};
+        
+        auto it = op_tokens.find(str);
+        if (it != op_tokens.end()) {
+            return it->second;
         }
+        return "UNKNOWN";
 }
 
 //Checks if string is a separator
@@ -95,33 +63,16 @@ bool isSeparator(const std::string& str) {
 
 //Return appropriate token for each separator
 std::string whichSeparator(const std::string str) {
-    if (str == "{") {
-        return "LCURLY";
-    } else if (str == "}") {
-        return "RCURLY";
-    } else if (str == ",") {
-        return "COMMA";
-    } else if (str == "(") {
-        return "LPAREN";
-    } else if (str == ")") {
-        return "RPAREN";
-    } else if (str == ";") {
-        return "SEMICOL";
-    } else if (str == "[") {
-        return "LSQRBRACE";
-    } else if (str == "]") {
-        return "RSQRBRACE";
-    } else if (str == ":") {
-        return "COLON";
-    } else if (str == "'") {
-        return "APOST";
-    } else if (str == "#") {
-        return "POUND";
-    } else if (str == "\"") {
-        return "QUOTES";
-    } else {
-        return "UNKNOWN";
+    std::unordered_map<std::string, std::string> sep_tokens = {{"{", "LCURLY"}, {"}", "RCURLY"}, {",", "COMMA"}, {"(", "LPAREN"},
+    {")", "RPARAN"}, {";", "SEMICOL"}, {"[", "LSQRBRACE"}, {"]", "RSQRBRACE"}, {":", "COLON"}, {"'", "ASPOST"}, {"#", "POUND"},
+    {"\"", "QUOTE"}};
+    
+    auto it = sep_tokens.find(str);
+    if (it != sep_tokens.end()) {
+        return it->second;
     }
+
+    return "UNKNOWN";
 }
 
 void tokenize(std::string& filename) {
