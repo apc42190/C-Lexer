@@ -35,9 +35,9 @@ bool isOperator(const std::string& str) {
 
 std::string whichOperator(const std::string str) {
         if (str == "<") {
-            return "LEFTANGLE";
+            return "LSTHAN";
         } else if (str == ">") {
-            return "RIGHTANGLE";
+            return "GRTHAN";
         } else if (str == "*") {
             return "MUL";
         } else if (str == "+") {
@@ -47,25 +47,25 @@ std::string whichOperator(const std::string str) {
         } else if (str == "/") {
             return "DIVIDE";
         } else if (str == "=") {
-            return "EQUAL";
+            return "ASSIGN";
         } else if (str == "-=") {
-            return "MINEQU";
+            return "MINEQ";
         } else if (str == "*=") {
-            return "MULEQU";
+            return "MULEQ";
         } else if (str == "+=") {
-            return "PLUSEQU";
+            return "PLUSEQ";
         } else if (str == "/=") {
-            return "DIVEQU";
+            return "DIVEQ";
         } else if (str == "++") {
             return "INCRMT";
         } else if (str == "--") {
             return "DECRMT";
         } else if (str == "==") {
-            return "DBLEQU";
+            return "CMPEQUAL";
         } else if (str == "<=") {
-            return "LESSEQU";
+            return "LSEQ";
         } else if (str == ">=") {
-            return "GREATEREQU";
+            return "GREQ";
         } else if (str == "||") {
             return "OR";
         } else if (str == "&&") {
@@ -73,7 +73,7 @@ std::string whichOperator(const std::string str) {
         } else if (str == "!") {
             return "NOT";
         } else if (str == "!=") {
-            return "NOTEQU";
+            return "NOTEQ";
         } else {
             return "UNKNOWN";
         }
@@ -90,7 +90,35 @@ bool isSeperator(const std::string& str) {
     return false;
 }
 
-std::string whichSeperator(const std::string);
+std::string whichSeperator(const std::string str) {
+    if (str == "{") {
+        return "LCURLY";
+    } else if (str == "}") {
+        return "RCURLY";
+    } else if (str == ",") {
+        return "COMMA";
+    } else if (str == "(") {
+        return "LPAREN";
+    } else if (str == ")") {
+        return "RPAREN";
+    } else if (str == ";") {
+        return "SEMICOL";
+    } else if (str == "[") {
+        return "LSQRBRACE";
+    } else if (str == "]") {
+        return "RSQRBRACE";
+    } else if (str == ":") {
+        return "COLON";
+    } else if (str == "'") {
+        return "APOST";
+    } else if (str == "#") {
+        return "POUND";
+    } else if (str == "\"") {
+        return "QUOTES";
+    } else {
+        return "UNKNOWN";
+    }
+}
 
 void tokenize(std::string& filename) {
     std::ofstream output("lexer_output.txt");
@@ -185,7 +213,7 @@ void tokenize(std::string& filename) {
         }
 
         if (isSeperator(std::string(1, input[current]))) {
-            output << "SEPERATOR: " << input[current] << "\n";
+            output << whichSeperator(std::string(1,input[current])) << ": " << input[current] << "\n";
             current++;
             substring = "";
             continue;
