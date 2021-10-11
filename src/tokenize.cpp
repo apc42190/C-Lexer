@@ -51,7 +51,7 @@ std::string whichOperator(const std::string str) {
 
 //Checks if string is a separator
 bool isSeparator(const std::string& str) {
-    const std::vector<std::string> punctuations{"{", "}", ",", "(", ")", ";", "[", "]", ":", "'", "#", "\""};
+    const std::vector<std::string> punctuations{"{", "}", ",", "(", ")", ";", "[", "]", ":", "'", "#"};
     for(std::string punc : punctuations) {
         if(str == punc) {
             return true;
@@ -64,8 +64,7 @@ bool isSeparator(const std::string& str) {
 //Return appropriate token for each separator
 std::string whichSeparator(const std::string str) {
     std::unordered_map<std::string, std::string> sep_tokens = {{"{", "LCURLY"}, {"}", "RCURLY"}, {",", "COMMA"}, {"(", "LPAREN"},
-    {")", "RPARAN"}, {";", "SEMICOL"}, {"[", "LSQRBRACE"}, {"]", "RSQRBRACE"}, {":", "COLON"}, {"'", "ASPOST"}, {"#", "POUND"},
-    {"\"", "QUOTE"}};
+    {")", "RPARAN"}, {";", "SEMICOL"}, {"[", "LSQRBRACE"}, {"]", "RSQRBRACE"}, {":", "COLON"}, {"'", "ASPOST"}, {"#", "POUND"}};
     
     auto it = sep_tokens.find(str);
     if (it != sep_tokens.end()) {
@@ -122,10 +121,10 @@ void tokenize(std::string& filename) {
         }
 
         //Identifies character literals when lexer encounters '
-        if (input[current] == '\'') {
+        if (std::string(1, input[current]) == "'") {
             substring += input[current];
             current++;
-            while (input[current] != '\'') {
+            while (std::string(1, input[current]) != "'") {
                 substring += input[current];
                 current++;
             }
@@ -157,6 +156,7 @@ void tokenize(std::string& filename) {
         if (isOperator(std::string(1, input[current]))) {
             substring += input[current];
 
+            //Ignore Comments
             if (input[current] == '/'){
                 if (input[current + 1] == '/') {
                     while(input[current] != '\n') {
