@@ -1,7 +1,7 @@
 KEYWORD: int
 ID: main
 LPAREN: (
-RPARAN: )
+RPAREN: )
 LCURLY: {
 KEYWORD: int
 ID: pizza

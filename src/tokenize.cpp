@@ -64,7 +64,7 @@ bool isSeparator(const std::string& str) {
 //Return appropriate token for each separator
 std::string whichSeparator(const std::string str) {
     std::unordered_map<std::string, std::string> sep_tokens = {{"{", "LCURLY"}, {"}", "RCURLY"}, {",", "COMMA"}, {"(", "LPAREN"},
-    {")", "RPARAN"}, {";", "SEMICOL"}, {"[", "LSQRBRACE"}, {"]", "RSQRBRACE"}, {":", "COLON"}, {"'", "ASPOST"}, {"#", "POUND"}};
+    {")", "RPAREN"}, {";", "SEMICOL"}, {"[", "LSQRBRACE"}, {"]", "RSQRBRACE"}, {":", "COLON"}, {"'", "ASPOST"}, {"#", "POUND"}};
     
     auto it = sep_tokens.find(str);
     if (it != sep_tokens.end()) {
