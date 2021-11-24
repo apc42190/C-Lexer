@@ -1,90 +1,93 @@
-KEYWORD: int
-ID: main
-LPAREN: (
-RPAREN: )
-LCURLY: {
-KEYWORD: int
-ID: pizza
-ASSIGN: =
-INTEGER: 1234567890
-SEMICOL: ;
-KEYWORD: char
-ID: a
-ASSIGN: =
-CHAR: 'a'
-SEMICOL: ;
-KEYWORD: char
-ID: b
-ASSIGN: =
-CHAR: '_'
-SEMICOL: ;
-KEYWORD: char
-ID: pie
-LSQRBRACE: [
-RSQRBRACE: ]
-ASSIGN: =
-STRING: "pizza al taglio"
-SEMICOL: ;
-KEYWORD: int
-ID: pasta
-ASSIGN: =
-INTEGER: 234123543234
-SEMICOL: ;
-KEYWORD: float
-ID: eatzaa
-ASSIGN: =
-REAL: 9876.543210
-SEMICOL: ;
-KEYWORD: double
-ID: oobaz
-ASSIGN: =
-REAL: 23452345.0234590234
-SEMICOL: ;
-KEYWORD: float
-ID: whatever
-ASSIGN: =
-REAL: 4.99999
-SEMICOL: ;
-ID: pizza
-ASSIGN: =
-ID: pizza
-PLUS: +
-ID: pasta
-SEMICOL: ;
-ID: pizza
-ASSIGN: =
-ID: pizza
-MINUS: -
-ID: pasta
-SEMICOL: ;
-ID: eatzaa
-PLUSEQ: +=
-ID: whatever
-SEMICOL: ;
-ID: eatzaa
-MINEQ: -=
-ID: whatever
-SEMICOL: ;
-ID: eatzaa
-TIMESEQ: *=
-ID: oobaz
-SEMICOL: ;
-ID: eatzaa
-DIVEQ: /=
-ID: oobaz
-SEMICOL: ;
-KEYWORD: char
-ID: ch
-ASSIGN: =
-CHAR: 'a'
-SEMICOL: ;
-KEYWORD: int
-ID: arr
-LSQRBRACE: [
-INTEGER: 5
-RSQRBRACE: ]
-SEMICOL: ;
-KEYWORD: return
-INTEGER: 0
-SEMICOL: ;
-RCURLY: }
+Identifier count
+ASSIGN
+Integer 1
+SEMICOLON
+Identifier n
+ASSIGN
+Integer 1
+SEMICOLON
+Identifier limit
+ASSIGN
+Integer 100
+SEMICOLON
+WHILE
+LPAREN
+Identifier n
+LSTHAN
+Identifier limit
+RPAREN
+LCURLY
+Identifier k
+ASSIGN
+Integer 3
+SEMICOLON
+Identifier p
+ASSIGN
+Integer 1
+SEMICOLON
+Identifier n
+ASSIGN
+Identifier n
+PLUS
+Integer 2
+SEMICOLON
+WHILE
+LPAREN
+LPAREN
+Identifier k
+TIMES
+Identifier k
+LSEQ
+Identifier n
+RPAREN
+LPAREN
+Identifier p
+RPAREN
+RPAREN
+LCURLY
+Identifier p
+ASSIGN
+Identifier n
+Identifier /k
+TIMES
+Identifier k
+NOTEQUAL
+Identifier n
+SEMICOLON
+Identifier k
+ASSIGN
+Identifier k
+PLUS
+Integer 2
+SEMICOLON
+RCURLY
+IF
+LPAREN
+Identifier p
+RPAREN
+LCURLY
+Identifier print
+LPAREN
+Identifier n
+COMMA
+String " is prime\n"
+RPAREN
+SEMICOLON
+Identifier count
+ASSIGN
+Identifier count
+PLUS
+Integer 1
+SEMICOLON
+RCURLY
+RCURLY
+Identifier print
+LPAREN
+String "Total primes found: "
+COMMA
+Identifier count
+COMMA
+String "\n"
+RPAREN
+SEMICOLON
+EOF

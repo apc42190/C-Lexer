@@ -7,7 +7,10 @@ int main() {
     float eatzaa = 9876.543210;
     double oobaz = 23452345.0234590234;
     float whatever = 4.99999;
-    pizza = pizza + pasta;
+
+    if (pasta == 5) {
+        pizza = pizza + pasta;
+    }
 
     //Nobody knows the trouble I've seen
     
